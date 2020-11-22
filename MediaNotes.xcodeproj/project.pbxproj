@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8815522C2542E40B008EC4A1 /* Row2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8815522B2542E40B008EC4A1 /* Row2.swift */; };
 		88579FB8253F35A200701012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88579FB7253F35A200701012 /* AppDelegate.swift */; };
 		88579FBA253F35A200701012 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88579FB9253F35A200701012 /* SceneDelegate.swift */; };
 		88579FBD253F35A200701012 /* MediaNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88579FBB253F35A200701012 /* MediaNotes.xcdatamodeld */; };
@@ -14,9 +15,19 @@
 		88579FC1253F35A700701012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88579FC0253F35A700701012 /* Assets.xcassets */; };
 		88579FC4253F35A700701012 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88579FC3253F35A700701012 /* Preview Assets.xcassets */; };
 		88579FC7253F35A700701012 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88579FC5253F35A700701012 /* LaunchScreen.storyboard */; };
+		8883B9302544177000BFEDBA /* AddingWatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883B92F2544177000BFEDBA /* AddingWatchedView.swift */; };
+		8883B93C2544772700BFEDBA /* DetailWatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883B93B2544772700BFEDBA /* DetailWatchedView.swift */; };
+		8883B9402544836400BFEDBA /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883B93F2544836400BFEDBA /* ColorManager.swift */; };
+		88A7B9F725408B9C00291755 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A7B9F625408B9C00291755 /* Row.swift */; };
+		88A7B9FB25408D3700291755 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A7B9FA25408D3700291755 /* Film.swift */; };
+		88CCE6732543402200F08BEC /* AddingNotWatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CCE6722543402200F08BEC /* AddingNotWatchedView.swift */; };
+		88CF85E125419F96001A507D /* DetailNotWatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CF85E025419F96001A507D /* DetailNotWatchedView.swift */; };
+		88CF85E52541A2F3001A507D /* NotWatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CF85E42541A2F3001A507D /* NotWatchedView.swift */; };
+		88CF85E82541A2FF001A507D /* WatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CF85E72541A2FF001A507D /* WatchedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8815522B2542E40B008EC4A1 /* Row2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row2.swift; sourceTree = "<group>"; };
 		88579FB4253F35A200701012 /* MediaNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88579FB7253F35A200701012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88579FB9253F35A200701012 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +37,15 @@
 		88579FC3253F35A700701012 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		88579FC6253F35A700701012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88579FC8253F35A700701012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8883B92F2544177000BFEDBA /* AddingWatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingWatchedView.swift; sourceTree = "<group>"; };
+		8883B93B2544772700BFEDBA /* DetailWatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWatchedView.swift; sourceTree = "<group>"; };
+		8883B93F2544836400BFEDBA /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		88A7B9F625408B9C00291755 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		88A7B9FA25408D3700291755 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		88CCE6722543402200F08BEC /* AddingNotWatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNotWatchedView.swift; sourceTree = "<group>"; };
+		88CF85E025419F96001A507D /* DetailNotWatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNotWatchedView.swift; sourceTree = "<group>"; };
+		88CF85E42541A2F3001A507D /* NotWatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotWatchedView.swift; sourceTree = "<group>"; };
+		88CF85E72541A2FF001A507D /* WatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +78,17 @@
 		88579FB6253F35A200701012 /* MediaNotes */ = {
 			isa = PBXGroup;
 			children = (
+				88CCE6752543709100F08BEC /* Views */,
 				88579FB7253F35A200701012 /* AppDelegate.swift */,
 				88579FB9253F35A200701012 /* SceneDelegate.swift */,
-				88579FBE253F35A200701012 /* ContentView.swift */,
+				88A7B9F625408B9C00291755 /* Row.swift */,
+				8815522B2542E40B008EC4A1 /* Row2.swift */,
+				8883B93F2544836400BFEDBA /* ColorManager.swift */,
 				88579FC0253F35A700701012 /* Assets.xcassets */,
 				88579FC5253F35A700701012 /* LaunchScreen.storyboard */,
 				88579FC8253F35A700701012 /* Info.plist */,
 				88579FBB253F35A200701012 /* MediaNotes.xcdatamodeld */,
+				88A7B9FA25408D3700291755 /* Film.swift */,
 				88579FC2253F35A700701012 /* Preview Content */,
 			);
 			path = MediaNotes;
@@ -76,6 +100,20 @@
 				88579FC3253F35A700701012 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		88CCE6752543709100F08BEC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88579FBE253F35A200701012 /* ContentView.swift */,
+				88CF85E42541A2F3001A507D /* NotWatchedView.swift */,
+				88CCE6722543402200F08BEC /* AddingNotWatchedView.swift */,
+				88CF85E025419F96001A507D /* DetailNotWatchedView.swift */,
+				88CF85E72541A2FF001A507D /* WatchedView.swift */,
+				8883B92F2544177000BFEDBA /* AddingWatchedView.swift */,
+				8883B93B2544772700BFEDBA /* DetailWatchedView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,7 +143,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = Aleksa;
 				TargetAttributes = {
 					88579FB3253F35A200701012 = {
@@ -149,9 +187,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88CF85E82541A2FF001A507D /* WatchedView.swift in Sources */,
 				88579FB8253F35A200701012 /* AppDelegate.swift in Sources */,
+				88A7B9FB25408D3700291755 /* Film.swift in Sources */,
+				8815522C2542E40B008EC4A1 /* Row2.swift in Sources */,
+				8883B93C2544772700BFEDBA /* DetailWatchedView.swift in Sources */,
 				88579FBA253F35A200701012 /* SceneDelegate.swift in Sources */,
+				88CF85E52541A2F3001A507D /* NotWatchedView.swift in Sources */,
+				8883B9402544836400BFEDBA /* ColorManager.swift in Sources */,
+				88CF85E125419F96001A507D /* DetailNotWatchedView.swift in Sources */,
 				88579FBF253F35A200701012 /* ContentView.swift in Sources */,
+				88A7B9F725408B9C00291755 /* Row.swift in Sources */,
+				8883B9302544177000BFEDBA /* AddingWatchedView.swift in Sources */,
+				88CCE6732543402200F08BEC /* AddingNotWatchedView.swift in Sources */,
 				88579FBD253F35A200701012 /* MediaNotes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +244,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -256,6 +305,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -288,19 +338,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MediaNotes/Preview Content\"";
 				DEVELOPMENT_TEAM = 8FRM8M93L5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MediaNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = site.aleksa.MediaNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,19 +361,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MediaNotes/Preview Content\"";
 				DEVELOPMENT_TEAM = 8FRM8M93L5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MediaNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = site.aleksa.MediaNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
