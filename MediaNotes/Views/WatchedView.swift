@@ -16,44 +16,65 @@ struct WatchedView: View {
         ,predicate: NSPredicate(format: "isWatched == %@", NSNumber(value: true))
     ) var modelData: FetchedResults<Media>
     
-    @State var isPresentedAddingView = false
-    @State var isPresentedDetailView = false
+    @State var activeSheet = 0
+    @State var isPresented = false
+    @State var filmIDWV: UUID = UUID()
     
     var body: some View {
         NavigationView {
             List {
                 ForEach (modelData) { watch in
                     Row2(film: watch)
-                        .onTapGesture { isPresentedDetailView.toggle()}
-                        .sheet(isPresented: $isPresentedDetailView, content: {
-                            DetailWatchedView(film: watch, isPresentedDetailView: $isPresentedDetailView)
-                        })
+                        .onTapGesture {
+                            print("WatchedView.List.ForEach(modelData).Row(watch).onTapGesture()")
+                            filmIDWV = watch.id!
+                            print("watch.title = \(watch.title!)")
+                            print("watch.id    = \(watch.id!)")
+                            print("filmID      = \(filmIDWV)")
+                            activeSheet = 1
+                            isPresented = true
+                            print("activeSheet: \(activeSheet)")
+                        }
                 }
                 .onDelete(perform: { indexSet in
                     do {
+                        print("WatchedView.List.ForEach(modelData).onDelete()")
                         for index in indexSet {
                             print("delete: ", index)
-                            let film = modelData[index]
-                            managedObjectContext.delete(film)
+                            let filmWV = modelData[index]
+                            managedObjectContext.delete(filmWV)
                         }
                         try managedObjectContext.save()
-                    } catch {
-                        print(error)
-                    }
+                    } catch { print(error) }
                 })
             }
-            .sheet(isPresented: $isPresentedAddingView, content: {
-                AddingWatchedView(isPresentedAddingView: $isPresentedAddingView)
-            })
+            .sheet(isPresented: $isPresented) {
+                MySheetsWV(activeSheet: $activeSheet, filmID: $filmIDWV, isPresented: $isPresented)
+            }
             .navigationBarTitle("Просмотренные")
-            .navigationBarItems(trailing: Button(action: { isPresentedAddingView.toggle() },
-                                                 label: { Image(systemName: "plus").imageScale(.large) }))
+            .navigationBarItems(trailing:
+                                    Button(action: {
+                                        activeSheet = 2
+                                        isPresented = true },
+                                           label: { Image(systemName: "plus.circle").imageScale(.large) }))
         }.listStyle(PlainListStyle())
     }
 }
 
-struct WatchedView_Previews: PreviewProvider {
-    static var previews: some View {
-        WatchedView()
+struct MySheetsWV: View {
+    @Binding var activeSheet: Int
+    @Binding var filmID: UUID
+    @Binding var isPresented: Bool
+    
+    var body: some View {
+        if activeSheet == 1 {
+            DetailWatchedView(filmIDWV: $filmID, isPresentedDetailViewWV: $isPresented)
+        }
+        else if activeSheet == 2 {
+            AddingWatchedView(isPresented: $isPresented)
+        }
+        else if activeSheet == 0 {
+            Text("0")
+        }
     }
 }

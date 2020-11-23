@@ -11,8 +11,13 @@ import SwiftUI
 struct DetailNotWatchedView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    var film: Media
+    @FetchRequest(
+        entity: Media.entity()
+        ,sortDescriptors: [NSSortDescriptor(keyPath: \Media.title, ascending: true)]
+        ,predicate: NSPredicate(format: "isWatched == %@", NSNumber(value: false))
+    ) var modelData: FetchedResults<Media>
     
+    @Binding var filmID: UUID
     @Binding var isPresentedDetailView: Bool
     
     @State var title: String = ""
@@ -59,8 +64,8 @@ struct DetailNotWatchedView: View {
                     })
                     .padding(.bottom, 5.0)
                     .pickerStyle(SegmentedPickerStyle())
-                    
                 }
+                
                 //MARK: if-else begin
                 
                 if (title.isEmpty) {
@@ -91,7 +96,7 @@ struct DetailNotWatchedView: View {
                 } else {
                     Button(action: {
                         let updatedMedia = Media(context: managedObjectContext)
-                        
+                        let film = getFilm(id: filmID)
                         updatedMedia.id = UUID()
                         updatedMedia.title = title
                         updatedMedia.rating = Int32(rating)
@@ -103,7 +108,7 @@ struct DetailNotWatchedView: View {
                             try managedObjectContext.save()
                         }
                         catch { print(error) }
-                        isPresentedDetailView.toggle()
+                        isPresentedDetailView = false
                     }, label: {
                         Text("Сохранить")
                             .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -113,11 +118,11 @@ struct DetailNotWatchedView: View {
                             .foregroundColor(.white)
                             .cornerRadius(9)
                     })
-                    .disabled(title.isEmpty)
                     .padding(.bottom, 5.0)
                     
                     Button(action: {
                         let updatedMedia = Media(context: managedObjectContext)
+                        let film = getFilm(id: filmID)
                         
                         updatedMedia.id = UUID()
                         updatedMedia.title = title
@@ -130,9 +135,7 @@ struct DetailNotWatchedView: View {
                             try managedObjectContext.save()
                         }
                         catch { print(error) }
-                        
-                        isPresentedDetailView.toggle()
-                        
+                        isPresentedDetailView = false
                     }, label: {
                         Text("В \"Просмотренные\"")
                             .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -150,22 +153,27 @@ struct DetailNotWatchedView: View {
             }
             .padding()
             .navigationBarTitle("Изменить", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {isPresentedDetailView.toggle()},
-                                                 label: { Image(systemName: "xmark").imageScale(.medium) }))
+            .navigationBarItems(trailing: Button(action: {
+                                                    isPresentedDetailView = false
+            },
+                                                 label: { Image(systemName: "xmark.circle").imageScale(.large) }))
             .onAppear(){
+                print("DetailNotWatchedView.onAppear()")
+                print("filmID = \(filmID)")
+                
+                let film = getFilm(id: filmID)
+                
                 title = film.title ?? "nil"
                 type = film.type ?? "nil"
                 rating = Int(film.rating)
             }
         }
     }
+
+    func getFilm(id: UUID) -> Media {
+        for data in modelData {
+            if (data.id == id) { return data }
+        }
+        return modelData[0]
+    }
 }
-
-
-//struct DetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let f0 = Film(id: UUID(), title: "Hello", type: "film")
-//
-//        DetailView(film: f0)
-//    }
-//}

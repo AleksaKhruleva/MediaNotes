@@ -9,12 +9,16 @@
 import SwiftUI
 
 struct DetailWatchedView: View {
-    
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    var film: Media
+    @FetchRequest(
+        entity: Media.entity()
+        ,sortDescriptors: [NSSortDescriptor(keyPath: \Media.title, ascending: true)]
+        ,predicate: NSPredicate(format: "isWatched == %@", NSNumber(value: true))
+    ) var modelData: FetchedResults<Media>
     
-    @Binding var isPresentedDetailView: Bool
+    @Binding var filmIDWV: UUID
+    @Binding var isPresentedDetailViewWV: Bool
     
     @State var title: String = ""
     @State var type: String = ""
@@ -60,8 +64,8 @@ struct DetailWatchedView: View {
                     })
                     .padding(.bottom, 5.0)
                     .pickerStyle(SegmentedPickerStyle())
-                    
                 }
+                
                 //MARK: if-else begin
                 
                 if (title.isEmpty) {
@@ -92,21 +96,19 @@ struct DetailWatchedView: View {
                 } else {
                     Button(action: {
                         let updatedMedia = Media(context: managedObjectContext)
-                        
+                        let filmWV = getFilm(id: filmIDWV)
                         updatedMedia.id = UUID()
                         updatedMedia.title = title
                         updatedMedia.rating = Int32(rating)
                         updatedMedia.type = type
-                        updatedMedia.isWatched = film.isWatched
+                        updatedMedia.isWatched = filmWV.isWatched
                         
                         do {
-                            managedObjectContext.delete(film)
+                            managedObjectContext.delete(filmWV)
                             try managedObjectContext.save()
                         }
                         catch { print(error) }
-                        
-                        isPresentedDetailView.toggle()
-                        
+                        isPresentedDetailViewWV = false
                     }, label: {
                         Text("Сохранить")
                             .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -120,21 +122,20 @@ struct DetailWatchedView: View {
                     
                     Button(action: {
                         let updatedMedia = Media(context: managedObjectContext)
+                        let filmWV = getFilm(id: filmIDWV)
                         
                         updatedMedia.id = UUID()
                         updatedMedia.title = title
                         updatedMedia.rating = Int32(rating)
                         updatedMedia.type = type
-                        updatedMedia.isWatched = !film.isWatched
+                        updatedMedia.isWatched = !filmWV.isWatched
                         
                         do {
-                            managedObjectContext.delete(film)
+                            managedObjectContext.delete(filmWV)
                             try managedObjectContext.save()
                         }
                         catch { print(error) }
-                        
-                        isPresentedDetailView.toggle()
-                        
+                        isPresentedDetailViewWV = false
                     }, label: {
                         Text("В \"Посмотреть\"")
                             .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -152,29 +153,25 @@ struct DetailWatchedView: View {
             }
             .padding()
             .navigationBarTitle("Изменить", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {isPresentedDetailView.toggle()},
-                                                 label: { Image(systemName: "xmark").imageScale(.medium) }))
-            .onAppear(){
-                title = film.title ?? "nil"
-                type = film.type ?? "nil"
-                rating = Int(film.rating)
+            .navigationBarItems(trailing: Button(action: {isPresentedDetailViewWV = false},
+                                                 label: { Image(systemName: "xmark.circle").imageScale(.medium) }))
+            .onAppear() {
+                print("DetailWatchedView.onAppear()")
+                print("filmID = \(filmIDWV)")
+                
+                let filmWV = getFilm(id: filmIDWV)
+                
+                title = filmWV.title ?? "nil"
+                type = filmWV.type ?? "nil"
+                rating = Int(filmWV.rating)
             }
         }
     }
+    
+    func getFilm(id: UUID) -> Media {
+        for data in modelData {
+            if (data.id == id) { return data }
+        }
+        return modelData[0]
+    }
 }
-
-
-//struct DetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let f0 = Film(id: UUID(), title: "Hello", type: "film")
-//
-//        DetailView(film: f0)
-//    }
-//}
-
-
-//struct DetailWatchedView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DetailWatchedView()
-//    }
-//}

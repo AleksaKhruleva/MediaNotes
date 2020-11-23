@@ -12,7 +12,7 @@ struct AddingWatchedView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
-    @Binding var isPresentedAddingView: Bool
+    @Binding var isPresented: Bool
     
     @State var title = ""
     @State var type = "фильм"
@@ -92,7 +92,7 @@ struct AddingWatchedView: View {
                         title = ""
                         type = ""
                         
-                        isPresentedAddingView.toggle()
+                        isPresented.toggle()
                         
                     }, label: {
                         Text("Сохранить")
@@ -117,16 +117,10 @@ struct AddingWatchedView: View {
                                         title = ""
                                         type = ""
                                         
-                                        isPresentedAddingView.toggle()
+                                        isPresented.toggle()
                                         print("close button")
                                         
-                                    }, label: { Image(systemName:"xmark").imageScale(.medium) }))
+                                    }, label: { Image(systemName:"xmark.circle").imageScale(.large) }))
         }
     }
 }
-
-//struct AddingNewWatchedView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddingNewWatchedView()
-//    }
-//}

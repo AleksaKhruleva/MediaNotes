@@ -98,13 +98,7 @@ struct AddingNotWatchedView: View {
                                         title = ""
                                         type = ""
                                         isPresented.toggle()
-                                    }, label: { Image(systemName: "xmark").imageScale(.medium) }))
+                                    }, label: { Image(systemName: "xmark.circle").imageScale(.large) }))
         }
     }
 }
-
-//struct AddingNotWatchedView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddingNotWatchedView()
-//    }
-//}
