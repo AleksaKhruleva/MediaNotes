@@ -25,9 +25,7 @@ struct AddingNotWatchedView: View {
                         .cornerRadius(9)
                         .font(.system(size: 20, weight: .bold))
                     
-                    Button(action: {
-                        title = ""
-                    }, label: {
+                    Button(action: {  title = "" }, label: {
                         Image(systemName: "multiply.circle.fill")
                             .imageScale(.large)
                             .foregroundColor(ColorManager.lightGray)
@@ -59,7 +57,6 @@ struct AddingNotWatchedView: View {
                            }).disabled(true)
                 } else {
                     Button(action: {
-                        
                         let newMedia = Media(context: managedObjectContext)
                         
                         newMedia.id = UUID()
@@ -73,7 +70,6 @@ struct AddingNotWatchedView: View {
                         
                         title = ""
                         type = ""
-                        
                         isPresented.toggle()
                     }, label: {
                         Text("Сохранить")
@@ -89,7 +85,6 @@ struct AddingNotWatchedView: View {
                 //MARK: if-else end
                 
                 Spacer()
-                
             }
             .padding()
             .navigationBarTitle("Добавить", displayMode: .inline)
@@ -98,7 +93,8 @@ struct AddingNotWatchedView: View {
                                         title = ""
                                         type = ""
                                         isPresented.toggle()
-                                    }, label: { Image(systemName: "xmark.circle").imageScale(.large) }))
-        }
+                                    }, label: {
+                                        Image(systemName:
+                                                "xmark.circle").imageScale(.large) })) }
     }
 }

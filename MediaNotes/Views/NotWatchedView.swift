@@ -28,10 +28,10 @@ struct NotWatchedView: View {
                     Row(film: watch)
                         .onTapGesture {
                             print("NotWatchedView.List.ForEach(modelData).Row(watch).onTapGesture()")
-                            filmID = watch.id!
                             print("watch.title = \(watch.title!)")
                             print("watch.id    = \(watch.id!)")
                             print("filmID      = \(filmID)")
+                            filmID = watch.id!
                             activeSheet = 1
                             isPresented = true
                             print("activeSheet: \(activeSheet)")
@@ -49,9 +49,7 @@ struct NotWatchedView: View {
                             } catch { print(error) }
                 })
             }
-            .sheet(isPresented: $isPresented) {
-                MySheets(activeSheet: $activeSheet, filmID: $filmID, isPresented: $isPresented)
-            }
+            .sheet(isPresented: $isPresented) { MySheets(activeSheet: $activeSheet, filmID: $filmID, isPresented: $isPresented) }
             .navigationBarTitle("Посмотреть")
             .navigationBarItems(trailing:
                                     Button(action: {
@@ -62,9 +60,6 @@ struct NotWatchedView: View {
                                            label: { Image(systemName: "plus.circle").imageScale(.large) }))
             .listStyle(PlainListStyle())
         }
-        .onAppear() {
-            print(".onAppear().activeSheet: \(activeSheet)")
-        }
     }
 }
 
@@ -74,14 +69,7 @@ struct MySheets: View {
     @Binding var isPresented: Bool
     
     var body: some View {
-        if activeSheet == 1 {
-            DetailNotWatchedView(filmID: $filmID, isPresentedDetailView: $isPresented)
-        }
-        else if activeSheet == 2 {
-            AddingNotWatchedView(isPresented: $isPresented)
-        }
-        else if activeSheet == 0 {
-            Text("0")
-        }
+        if activeSheet == 1 { DetailNotWatchedView(filmID: $filmID, isPresentedDetailView: $isPresented) }
+        else if activeSheet == 2 { AddingNotWatchedView(isPresented: $isPresented) }
     }
 }

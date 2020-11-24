@@ -19,7 +19,6 @@ struct DetailWatchedView: View {
     
     @Binding var filmIDWV: UUID
     @Binding var isPresentedDetailViewWV: Bool
-    
     @State var title: String = ""
     @State var type: String = ""
     @State var rating = 0
@@ -32,10 +31,7 @@ struct DetailWatchedView: View {
                         .padding([.bottom, .vertical, .leading])
                         .cornerRadius(9)
                         .font(.system(size: 20, weight: .bold))
-                    
-                    Button(action: {
-                        title = ""
-                    }, label: {
+                    Button(action: {  title = "" }, label: {
                         Image(systemName: "multiply.circle.fill")
                             .imageScale(.large)
                             .foregroundColor(ColorManager.lightGray)
@@ -53,9 +49,7 @@ struct DetailWatchedView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 
                 HStack() {
-                    
                     Text("Рейтинг").bold()
-                    
                     Picker(selection: $rating, label: Text("Picker"), content: {
                         Image("CircleGray").tag(0)
                         Image("CircleRed").tag(1)
@@ -81,7 +75,6 @@ struct DetailWatchedView: View {
                            })
                         .disabled(true)
                         .padding(.bottom, 5.0)
-                    
                     Button(action: { },
                            label: {
                             Text("В \"Посмотреть\"")
@@ -154,13 +147,11 @@ struct DetailWatchedView: View {
             .padding()
             .navigationBarTitle("Изменить", displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {isPresentedDetailViewWV = false},
-                                                 label: { Image(systemName: "xmark.circle").imageScale(.medium) }))
+                                                 label: { Image(systemName: "xmark.circle").imageScale(.large) }))
             .onAppear() {
                 print("DetailWatchedView.onAppear()")
                 print("filmID = \(filmIDWV)")
-                
                 let filmWV = getFilm(id: filmIDWV)
-                
                 title = filmWV.title ?? "nil"
                 type = filmWV.type ?? "nil"
                 rating = Int(filmWV.rating)
@@ -169,9 +160,7 @@ struct DetailWatchedView: View {
     }
     
     func getFilm(id: UUID) -> Media {
-        for data in modelData {
-            if (data.id == id) { return data }
-        }
+        for data in modelData {  if (data.id == id) { return data } }
         return modelData[0]
     }
 }

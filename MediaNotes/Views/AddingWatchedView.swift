@@ -13,7 +13,6 @@ struct AddingWatchedView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @Binding var isPresented: Bool
-    
     @State var title = ""
     @State var type = "фильм"
     @State var rating = 0
@@ -28,9 +27,7 @@ struct AddingWatchedView: View {
                         .cornerRadius(9)
                         .font(.system(size: 20, weight: .bold))
                     
-                    Button(action: {
-                        title = ""
-                    }, label: {
+                    Button(action: { title = "" }, label: {
                         Image(systemName: "multiply.circle.fill")
                             .imageScale(.large)
                             .foregroundColor(ColorManager.lightGray)
@@ -48,9 +45,7 @@ struct AddingWatchedView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 
                 HStack() {
-                    
                     Text("Рейтинг").bold()
-                    
                     Picker(selection: $rating, label: Text("Picker"), content: {
                         Image("CircleGray").tag(0)
                         Image("CircleRed").tag(1)
@@ -59,8 +54,8 @@ struct AddingWatchedView: View {
                     })
                     .padding(.bottom, 5.0)
                     .pickerStyle(SegmentedPickerStyle())
-                    
                 }
+                
                 //MARK: if-else begin
                 
                 if (title.isEmpty) {
@@ -73,11 +68,9 @@ struct AddingWatchedView: View {
                                 .background(ColorManager.lightGray)
                                 .foregroundColor(.white)
                                 .cornerRadius(9)
-                            
                            }).disabled(true)
                 } else {
                     Button(action: {
-                        
                         let newMedia = Media(context: managedObjectContext)
                         
                         newMedia.id = UUID()
@@ -91,9 +84,7 @@ struct AddingWatchedView: View {
                         
                         title = ""
                         type = ""
-                        
                         isPresented.toggle()
-                        
                     }, label: {
                         Text("Сохранить")
                             .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -102,25 +93,20 @@ struct AddingWatchedView: View {
                             .background(Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(9)
-                        
                     })
                 }
                 
                 //MARK: if-else end
                 
                 Spacer()
-                
-            }.padding()
+            }
+            .padding()
             .navigationBarTitle("Добавить", displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
                                         title = ""
                                         type = ""
-                                        
                                         isPresented.toggle()
-                                        print("close button")
-                                        
-                                    }, label: { Image(systemName:"xmark.circle").imageScale(.large) }))
-        }
+                                    }, label: { Image(systemName:"xmark.circle").imageScale(.large) })) }
     }
 }

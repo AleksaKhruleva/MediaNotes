@@ -19,7 +19,6 @@ struct DetailNotWatchedView: View {
     
     @Binding var filmID: UUID
     @Binding var isPresentedDetailView: Bool
-    
     @State var title: String = ""
     @State var type: String = ""
     @State var rating = 0
@@ -32,10 +31,7 @@ struct DetailNotWatchedView: View {
                         .padding([.bottom, .vertical, .leading])
                         .cornerRadius(9)
                         .font(.system(size: 20, weight: .bold))
-                    
-                    Button(action: {
-                        title = ""
-                    }, label: {
+                    Button(action: { title = "" }, label: {
                         Image(systemName: "multiply.circle.fill")
                             .imageScale(.large)
                             .foregroundColor(ColorManager.lightGray)
@@ -53,9 +49,7 @@ struct DetailNotWatchedView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 
                 HStack() {
-                    
                     Text("Рейтинг").bold()
-                    
                     Picker(selection: $rating, label: Text("Picker"), content: {
                         Image("CircleGray").tag(0)
                         Image("CircleRed").tag(1)
@@ -81,7 +75,6 @@ struct DetailNotWatchedView: View {
                            })
                         .disabled(true)
                         .padding(.bottom, 5.0)
-                    
                     Button(action: {},
                            label: {
                             Text("В \"Просмотренные\"")
@@ -160,9 +153,7 @@ struct DetailNotWatchedView: View {
             .onAppear(){
                 print("DetailNotWatchedView.onAppear()")
                 print("filmID = \(filmID)")
-                
                 let film = getFilm(id: filmID)
-                
                 title = film.title ?? "nil"
                 type = film.type ?? "nil"
                 rating = Int(film.rating)
@@ -171,9 +162,7 @@ struct DetailNotWatchedView: View {
     }
 
     func getFilm(id: UUID) -> Media {
-        for data in modelData {
-            if (data.id == id) { return data }
-        }
+        for data in modelData { if (data.id == id) { return data } }
         return modelData[0]
     }
 }
